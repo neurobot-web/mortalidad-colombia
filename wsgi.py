@@ -1,4 +1,3 @@
-from app import server as application
+from app import app
 
-if __name__ == "__main__":
-    application.run()
+application = app.server
