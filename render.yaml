@@ -6,4 +6,4 @@ services:
     startCommand: gunicorn --bind 0.0.0.0:$PORT wsgi:application
     envVars:
       - key: PYTHON_VERSION
-        value: 3.8
+        value: 3.13
