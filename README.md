@@ -1,6 +1,6 @@
 # Análisis de Mortalidad en Colombia 2019
 
-## Descripción del Proyecto
+## Introducción del proyecto
 
 Esta aplicación web dinámica analiza los datos de mortalidad en Colombia para el año 2019, utilizando herramientas avanzadas de visualización interactiva con Plotly y Dash en Python. La aplicación permite explorar patrones demográficos y regionales a través de diversos gráficos interactivos.
 
@@ -8,7 +8,7 @@ Esta aplicación web dinámica analiza los datos de mortalidad en Colombia para 
 
 Proporcionar una herramienta accesible para identificar patrones, tendencias y correlaciones clave en los datos de mortalidad de Colombia, facilitando el análisis visual intuitivo de la información.
 
-## Estructura del Proyecto
+## Estructura del proyecto
 
 ```
 ├── app.py                 # Archivo principal de la aplicación Dash
@@ -33,7 +33,25 @@ Proporcionar una herramienta accesible para identificar patrones, tendencias y c
   - pandas==2.3.3
   - openpyxl==3.1.5
   - numpy==2.2.6
-  - gunicorn
+  - gunicorn==21.2.0
+
+## Despliegue
+
+La aplicación puede ser desplegada en diversos servicios en la nube que soporten Python. Para Render:
+
+1. Crear cuenta gratuita en Render
+2. Subir el repositorio a GitHub
+3. Conectar el repositorio a Render
+4. Render detectará automáticamente la configuración desde `render.yaml`
+5. La aplicación estará disponible en una URL gratuita
+
+## Software
+
+- **Python**: Lenguaje de programación principal
+- **Dash**: Framework para aplicaciones web
+- **Plotly**: Librería de visualización interactiva
+- **Pandas**: Manipulación y análisis de datos
+- **OpenPyXL**: Lectura de archivos Excel
 
 ## Instalación
 
@@ -55,53 +73,35 @@ Proporcionar una herramienta accesible para identificar patrones, tendencias y c
 
 4. Abre tu navegador en `http://localhost:8050`
 
-## Despliegue
-
-### Opción 1: Render (Recomendado - GRATIS)
-1. Crea una cuenta gratuita en [render.com](https://render.com)
-2. Sube este repositorio a GitHub
-3. Conecta tu repositorio a Render
-4. Render detectará automáticamente la configuración desde `render.yaml`
-5. La aplicación estará disponible en una URL gratuita
-
-### Opción 2: Otros servicios gratuitos
-- **Heroku**: 550 horas gratis/mes
-- **Railway**: 512MB RAM gratis
-- **PythonAnywhere**: Especializado en Python
-
-### Opción 3: cPanel (Requiere soporte Python)
-1. Acceder al panel de control CPANEL
-2. Crear una carpeta el proyecto `mortalidad-colombia`
-3. Subir los archivos del proyecto incluyendo `Anexos/` con los datos Excel
-4. Configura el servidor web para ejecutar aplicaciones Python (WSGI/CGI)
-5. Instala las dependencias requeridas en el servidor
-6. Configura el archivo de inicio de la aplicación
-
 ## Visualizaciones
 
-La aplicación incluye las siguientes visualizaciones interactivas con explicaciones de resultados:
+La aplicación incluye las siguientes visualizaciones interactivas:
 
-1. **Mapa de Departamentos**: Visualización de la distribución total de muertes por departamento en Colombia para el año 2019. Permite identificar las regiones con mayor concentración de mortalidad.
+### 1. Mapa de Departamentos
+![Mapa Departamentos](screenshots/mapa_departamentos.png)
+*Visualización de la distribución total de muertes por departamento en Colombia para el año 2019. Permite identificar las regiones con mayor concentración de mortalidad.*
 
-2. **Gráfico de Líneas**: Representación del total de muertes por mes en Colombia, mostrando variaciones a lo largo del año. Ayuda a identificar patrones estacionales en la mortalidad.
+### 2. Gráfico de Líneas - Muertes por Mes
+![Muertes por Mes](screenshots/muertes_mensuales.png)
+*Representación del total de muertes por mes en Colombia, mostrando variaciones a lo largo del año. Ayuda a identificar patrones estacionales en la mortalidad.*
 
-3. **Gráfico de Barras - Ciudades Violentas**: Visualización de las 5 ciudades más violentas de Colombia, considerando homicidios (códigos X95, agresión con disparo de armas de fuego y casos no especificados). Destaca las áreas con mayor índice de violencia.
+### 3. Ciudades Más Violentas
+![Ciudades Violentas](screenshots/ciudades_violentas.png)
+*Visualización de las 5 ciudades más violentas de Colombia, considerando homicidios. Destaca las áreas con mayor índice de violencia.*
 
-4. **Gráfico Circular**: Muestra las 10 ciudades con menor índice de mortalidad, proporcionando una perspectiva de las zonas más seguras en términos de mortalidad general.
+### 4. Ciudades con Menor Mortalidad
+![Menor Mortalidad](screenshots/ciudades_seguras.png)
+*Muestra las 10 ciudades con menor índice de mortalidad, proporcionando una perspectiva de las zonas más seguras.*
 
-5. **Tabla de Causas**: Listado de las 10 principales causas de muerte en Colombia, incluyendo su código, nombre y total de casos (ordenadas de mayor a menor). Facilita la identificación de las enfermedades y condiciones más letales.
+### 5. Tabla de Principales Causas
+![Tabla Causas](screenshots/tabla_causas.png)
+*Listado de las 10 principales causas de muerte en Colombia, incluyendo código, nombre y total de casos.*
 
-6. **Gráfico de Barras Apiladas**: Comparación del total de muertes por sexo en cada departamento, para analizar diferencias significativas entre géneros y distribución regional.
+### 6. Gráfico de Barras Apiladas - Muertes por Sexo y Departamento
+*Comparación del total de muertes por sexo en cada departamento, para analizar diferencias significativas entre géneros.*
 
-7. **Histograma**: Distribución de muertes agrupando los valores de la variable GRUPO_EDAD1 según los rangos definidos en la tabla de referencia para identificar patrones de mortalidad a lo largo del ciclo de vida.
-
-## Software Utilizado
-
-- **Python**: Lenguaje de programación principal
-- **Dash**: Framework para aplicaciones web
-- **Plotly**: Librería de visualización interactiva
-- **Pandas**: Manipulación y análisis de datos
-- **OpenPyXL**: Lectura de archivos Excel
+### 7. Histograma - Distribución por Grupos de Edad
+*Distribución de muertes agrupando por rangos de edad para identificar patrones de mortalidad a lo largo del ciclo de vida.*
 
 ## Datos
 
@@ -113,39 +113,9 @@ Los datos utilizados provienen del DANE (Departamento Administrativo Nacional de
 
 ## Resultados y Hallazgos
 
-### Capturas de Pantalla
-
-#### 1. Mapa de Departamentos
-![Mapa Departamentos](screenshots/mapa_departamentos.png)
-*El mapa muestra la distribución geográfica de muertes por departamento, destacando las regiones con mayor concentración de mortalidad.*
-
-#### 2. Gráfico de Líneas - Muertes por Mes
-![Muertes por Mes](screenshots/muertes_mensuales.png)
-*Este gráfico revela variaciones estacionales en la mortalidad, con posibles incrementos durante ciertos periodos del año.*
-
-#### 3. Ciudades Más Violentas
-![Ciudades Violentas](screenshots/ciudades_violentas.png)
-*Las 5 ciudades con mayor número de homicidios, indicando áreas críticas en términos de violencia urbana.*
-
-#### 4. Ciudades con Menor Mortalidad
-![Menor Mortalidad](screenshots/ciudades_seguras.png)
-*Representación de las zonas más seguras, útil para análisis comparativos de índices de mortalidad.*
-
-#### 5. Tabla de Principales Causas
-![Tabla Causas](screenshots/tabla_causas.png)
-*Clasificación de las enfermedades y condiciones más letales en Colombia durante 2019.*
-
 ### Estadísticas Generales
 - **Total de registros analizados**: 244,355 muertes en 2019
 - **Departamentos con mayor mortalidad**: Cundinamarca, Antioquia, Valle del Cauca
 - **Principales causas**: Enfermedades cardiovasculares, cáncer, accidentes
 - **Distribución por género**: Análisis de diferencias entre hombres y mujeres
 - **Grupos etarios más afectados**: Adultos mayores (60+ años) y población infantil
-
-## Contribuidores
-
-Mónica Contreras
-
-## Licencia
-
-Este proyecto es parte de la Maestría en Inteligencia Artificial - Aplicaciones I.
